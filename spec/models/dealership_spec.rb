@@ -11,12 +11,19 @@ RSpec.describe Dealership, type: :model do
     it "is not valid without name" do
       expect(build(:dealership, {name: nil})).not_to be_valid
     end
+
     it "is not valid without address" do
       expect(build(:dealership, {address: nil})).not_to be_valid
     end
+
     it "is not valid without country" do
       expect(build(:dealership, {country: nil})).not_to be_valid
     end
 
+    it "Associations, shuld have many cars" do
+      subject {described_class.new }
+      ass = described_class.reflect_on_association(:cars)
+      expect(ass.macro).to eq :has_and_belongs_to_many
+    end
   end
 end

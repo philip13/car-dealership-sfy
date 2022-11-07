@@ -19,8 +19,10 @@ RSpec.describe Dealership, type: :model do
     it "is not valid without country" do
       expect(build(:dealership, {country: nil})).not_to be_valid
     end
+  end
 
-    it "Associations, shuld have many cars" do
+  describe "Associations" do
+    it "shuld have many cars" do
       subject {described_class.new }
       ass = described_class.reflect_on_association(:cars)
       expect(ass.macro).to eq :has_and_belongs_to_many

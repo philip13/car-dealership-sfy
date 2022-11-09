@@ -1,0 +1,47 @@
+<%= form_with(model: dealership) do |form| %>
+  <% if dealership.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(dealership.errors.count, "error") %> prohibited this dealership from being saved:</h2>
+
+      <ul>
+        <% dealership.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name %></br>
+    <%= form.text_field :name %>
+  </div>
+  </br>
+
+  <div>
+    <%= form.label :address %></br>
+    <%= form.text_field :address %>
+  </div>
+  </br>
+
+  <div>
+    <%= form.label :city %></br>
+    <%= form.text_field :city %>
+  </div>
+  </br>
+
+  <div>
+    <%= form.label :state %></br>
+    <%= form.text_field :state %>
+  </div>
+  </br>
+
+  <div>
+    <%= form.label :country %></br>
+    <%= form.text_field :country %>
+  </div>
+  </br>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

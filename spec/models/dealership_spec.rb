@@ -19,6 +19,10 @@ RSpec.describe Dealership, type: :model do
     it "is not valid without country" do
       expect(build(:dealership, {country: nil})).not_to be_valid
     end
+
+    it "is not valid without city" do
+      expect(build(:dealership, {city: nil})).not_to be_valid
+    end
   end
 
   describe "Associations" do

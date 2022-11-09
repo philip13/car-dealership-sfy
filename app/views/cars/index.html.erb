@@ -1,0 +1,56 @@
+<h1>Index Cars</h1>
+<br/>
+
+<table>
+  <thead>
+    <tr>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Bub model</th>
+      <th>Price</th>
+      <th>Condition</th>
+      <th>Entry date</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr>
+        <td>
+          <%= car.brand %>
+        </td>
+        <td>
+          <%= car.model %>
+        </td>
+        <td>
+          <%= car.sub_model %>
+        </td>
+        <td>
+          <%= car.price %>
+        </td>
+        <td>
+          <%= car.condition %>
+        </td>
+        <td>
+          <%= car.entry_date %>
+        </td>
+        <td>
+          <%= link_to 'View', car %>
+        </td>
+        <td>
+          <%= link_to 'Edit', edit_car_path(car) %>
+        </td>
+        <td>
+          <%= link_to "Destroy", car_path(car), data: {
+            turbo_method: :delete,
+            turbo_confirm: "Are you sure?"
+          } %>
+        </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+
+<div>
+  <%= link_to 'New', new_car_path %>
+</div>

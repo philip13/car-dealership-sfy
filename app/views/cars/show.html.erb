@@ -1,0 +1,25 @@
+<h1>Car Details</h1>
+
+<p>
+  <strong>Brand: </strong> <%= @car.brand %>
+</p>
+<p>
+  <strong>Model: </strong> <%= @car.model %>
+</p>
+<p>
+  <strong>Sub Model: </strong> <%= @car.sub_model %>
+</p>
+<p>
+  <strong>Price: </strong> <%= @car.price %>
+</p>
+<p>
+  <strong>Condition: </strong> <%= @car.condition %>
+</p>
+<p>
+  <strong>Entry date: </strong> <%= @car.entry_date %>
+</p>
+
+<p>
+  <%= link_to 'Edit', edit_car_path(@car) %> | 
+  <%= link_to 'Back', cars_path %>
+</p>

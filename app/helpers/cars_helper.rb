@@ -14,9 +14,9 @@ module CarsHelper
       # ? => percentage
       percentage = 2 * months
       deprecated_price = ((percentage * price ) / 100 ).to_f
-      (price - deprecated_price).to_f
+      (price - deprecated_price).to_f.round(2)
     else
-      return price
+      return price.round(2)
     end
   end
 end

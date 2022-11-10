@@ -20,3 +20,9 @@
   background-color: red;
   display: table;
  }
+
+ td, th {
+  text-align: left;
+  border: 1px solid #ccc;
+  padding: 3px 5px ;
+ }

@@ -1,0 +1,29 @@
+<%= form_with(model: [car, cars_dealership]) do |form| %>
+  <% if cars_dealership.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(cars_dealership.errors.count, "error") %> prohibited this cars_dealership from being saved:</h2>
+
+      <ul>
+        <% cars_dealership.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :car_id, value: @car.id %>
+  <br/>
+
+  <div>
+    <%= form.label :dealership_id %>
+    <%= form.collection_select :dealership_id, @dealerships, :id, :name, { prompt: "-- Please Select --"} %>
+  </div>
+  <br/>
+
+  <div>
+    <%= form.label :located_at, "Located at a dealership?" %>
+    <%= form.check_box :located_at %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

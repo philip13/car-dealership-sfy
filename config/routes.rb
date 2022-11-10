@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "cars#index"
   
-  resources :cars
+  resources :cars do
+    resources :cars_dealerships, except: [:index, :show]
+  end
+
   resources :dealerships
 end

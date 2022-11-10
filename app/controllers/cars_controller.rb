@@ -1,5 +1,6 @@
 class CarsController < ApplicationController
   before_action :set_car, only: [:show, :edit, :update, :destroy]
+  before_action :get_car_dealerships, only: [:show ]
 
   def index
     @cars = Car.all
@@ -46,5 +47,10 @@ class CarsController < ApplicationController
 
   def set_car
     @car = Car.find(params[:id])
+  end
+
+  def get_car_dealerships
+    @car_dealerships = CarsDealership.includes(:dealership).where("car_id = ?", params[:id] )
+    puts "car_dealerships #{@car_dealerships}"
   end
 end

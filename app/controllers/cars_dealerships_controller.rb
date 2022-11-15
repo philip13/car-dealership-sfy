@@ -1,4 +1,8 @@
 class CarsDealershipsController < ApplicationController
+  before_action :require_signin
+  # before_action :authenticate_user!
+  before_action :block_if_not_admin
+
   before_action :set_car, only: %i[ new create edit update destroy]
   before_action :set_dealerships_picklist, only: %i[new create edit update]
   before_action :set_cars_dealership, only: %i[edit update destroy ]
@@ -51,6 +55,10 @@ class CarsDealershipsController < ApplicationController
   end
 
   private
+    # Only allow a list of trusted parameters through.
+    def cars_dealership_params
+      params.require(:cars_dealership).permit(:car_id, :dealership_id, :located_at)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_cars_dealership
       @cars_dealership = CarsDealership.find(params[:id])
@@ -62,10 +70,5 @@ class CarsDealershipsController < ApplicationController
 
     def set_dealerships_picklist
       @dealerships = Dealership.all
-    end
-
-    # Only allow a list of trusted parameters through.
-    def cars_dealership_params
-      params.require(:cars_dealership).permit(:car_id, :dealership_id, :located_at)
     end
 end

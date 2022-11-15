@@ -11,6 +11,33 @@
   </head>
 
   <body>
+    <ul>
+      <li>
+        <%= link_to 'Cars', cars_path %>
+      </li>
+      <li>
+        <%= link_to 'Dealerships', dealerships_path %>
+      </li>
+      <%if user_signed_in? %>
+        <li>
+          <%= current_user.role %>
+        </li>
+        <li>
+          <%= link_to "Sign Out", destroy_user_session_path, data: {
+              turbo_method: :delete } %>
+        </li>
+      <%else%>
+        <li>
+          <%= link_to 'Log in', new_user_session_path%>
+        </li>
+        <li>
+          <%= link_to 'Sing up', new_user_registration_path%>
+        </li>
+      <%end%>
+    </ul>
+
+      <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

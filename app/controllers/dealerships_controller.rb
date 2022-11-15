@@ -1,4 +1,7 @@
 class DealershipsController < ApplicationController
+  before_action :require_signin
+  # before_action :authenticate_user!
+  before_action :block_if_not_admin, except: [:index, :show]
   before_action :set_dealership, only: %i[ show edit update destroy ]
 
   # GET /dealerships or /dealerships.json
@@ -57,14 +60,14 @@ class DealershipsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_dealership
-      @dealership = Dealership.find(params[:id])
-    end
-
+  private    
     # Only allow a list of trusted parameters through.
     def dealership_params
       params.require(:dealership).permit(:name, :address, :city, :state, :country)
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_dealership
+      @dealership = Dealership.find(params[:id])
     end
 end

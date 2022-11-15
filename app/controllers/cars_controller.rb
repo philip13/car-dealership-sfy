@@ -1,4 +1,7 @@
 class CarsController < ApplicationController
+  before_action :require_signin
+  # before_action :authenticate_user!
+  before_action :block_if_not_admin, except: [:index, :show]
   before_action :set_car, only: [:show, :edit, :update, :destroy]
   before_action :get_car_dealerships, only: [:show ]
 
@@ -53,4 +56,5 @@ class CarsController < ApplicationController
     @car_dealerships = CarsDealership.includes(:dealership).where("car_id = ?", params[:id] )
     puts "car_dealerships #{@car_dealerships}"
   end
+
 end

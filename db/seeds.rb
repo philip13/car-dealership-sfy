@@ -6,6 +6,12 @@ require 'faker'
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+#user role 
+User.create(email: "fili.cueavas+user@gmail.com", password: "123456", password_confirmation: "123456")
+#user admin
+User.create(email: "fili.cueavas+admin@gmail.com", password: "123456", password_confirmation: "123456", role: 1)
+
 dealerships = []
 10.times do
   dealerships << Dealership.create(
@@ -17,7 +23,7 @@ dealerships = []
     )
 end
 
-puts "dealerships created = #{dealerships.inspect}"
+puts "#{dealerships.size} dealerships was create"
 
 10.times do |i|
   v_make = Faker::Vehicle.make
@@ -30,7 +36,8 @@ puts "dealerships created = #{dealerships.inspect}"
     condition: 'Used', 
     entry_date: Faker::Date.between(from: 4.years.ago, to: Date.today)
   )
-  c_dealer = CarsDealership.create(car_id: car.id, dealership_id: dealerships[i].id)
+  CarsDealership.create(car_id: car.id, dealership_id: dealerships[i].id)
+  puts "Create a #{car.inspect}"
 end
 
 10.times do |i|
@@ -45,5 +52,6 @@ end
     entry_date: Faker::Date.between(from: 1.years.ago, to: Date.today)
   )
 
-  c_dealer = CarsDealership.create(car_id: car.id, dealership_id: dealerships[i].id)
+  CarsDealership.create(car_id: car.id, dealership_id: dealerships[i].id)
+  puts "Create a #{car.inspect}"
 end

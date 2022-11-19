@@ -1,24 +1,62 @@
-# README
+# The Car Dealership App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a small Ruby on Rails application that can do basic inventory management for a car dealership manager with two roles (user, admin) 
 
-Things you may want to cover:
+## Project Specifications
 
-* Ruby version
+### Envirionment
+  - Ruby version '2.7.6'
+  - Bundle version recomend '2.1.4'
+  - postgres (PostgreSQL) 14.5
+  - Default Port: 3000
 
-* System dependencies
 
-* Configuration
 
-* Database creation
+## Getting Started
+Open a new terminal and type:
 
-* Database initialization
+`$ git clone git@github.com:philip13/car-dealership-sfy.git`
 
-* How to run the test suite
+Go to the downloaded folder and install:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+$ cd car-dealership-sfy
+$ bundle install
+```
 
-* Deployment instructions
+Database:
 
-* ...
+```
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+```
+
+### Run local server
+`$ rails s` 
+
+Open a browser and go to:
+
+http://localhost:3000/
+
+If you are not login the server redirect to http://localhost:3000/users/sign_in
+
+### Credential roles 
+You can use as user role login:
+
+```
+email: fili.cueavas+user@gmail.com
+password: 123456
+```
+As admin user
+```
+email: fili.cueavas+admin@gmail.com
+password: 123456
+```
+
+> You can create your own credentials modified the `db/seed.rb` file before run `rails db:seed`
+
+## Run tests
+```
+$ rspec spec/
+```
